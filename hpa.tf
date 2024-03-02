@@ -1,6 +1,6 @@
 resource "kubernetes_horizontal_pod_autoscaler_v1" "hpa" {
   for_each   = {for k, v in local.deployments : "${var.name}-${k}" => v if v.hpa_max_replicas > 0}
-  depends_on = [kubernetes_namespace_v1.namespace, module.gcp]
+  depends_on = [kubernetes_namespace_v1.namespace]
   metadata {
     name      = each.key
     namespace = var.namespace

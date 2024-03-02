@@ -1,6 +1,6 @@
 resource "kubernetes_pod_disruption_budget_v1" "pdb" {
   for_each   = {for k, v in local.deployments : "${var.name}-${k}" => v if v.pdb_min_available > 0}
-  depends_on = [kubernetes_namespace_v1.namespace, module.gcp]
+  depends_on = [kubernetes_namespace_v1.namespace]
   metadata {
     name      = each.key
     namespace = var.namespace
