@@ -44,7 +44,7 @@ module "deployment" {
   security_context_gid          = var.security_context_gid
   security_context_uid          = var.security_context_uid
   security_context_fsgroup      = var.security_context_fsgroup
-  env                           = each.value.env == null ? local.env : merge(local.env, each.value.env)
+  env                           = each.value.env == null ? var.env : merge(var.env, each.value.env)
   resources_limits_cpu          = each.value.resources_limits_cpu
   resources_limits_memory       = each.value.resources_limits_memory
   resources_requests_cpu        = each.value.resources_requests_cpu
@@ -55,7 +55,7 @@ module "deployment" {
   })
 
   env_secret = [
-    for k, v in    local.secret_env : {
+    for k, v in    var.secret_env : {
       secret = "${var.name}-secrets"
       name   = k
       key    = k
