@@ -1,6 +1,6 @@
 output "hpa_name" {
   description = "The name of the deployed HPA."
-  value       = kubernetes_horizontal_pod_autoscaler_v1.hpa.metadata.0.name
+  value       = kubernetes_horizontal_pod_autoscaler_v1.hpa.0.metadata.0.name
 }
 
 output "ingress" {
@@ -15,5 +15,5 @@ output "persistent_volume_claim_name" {
 
 output "service_account_name" {
   description = "The name of the service account."
-  value       = kubernetes_service_account_v1.service_account.metadata.0.name
+  value       = kubernetes_service_account_v1.service_account.0.metadata.0.name
 }
