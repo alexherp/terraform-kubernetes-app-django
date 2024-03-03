@@ -69,13 +69,6 @@ variable "celery_worker_defaults" {
   }
 }
 
-# Cloudflare
-variable "cloudflare_enabled" {
-  description = "Create cloudflare records if true"
-  type        = bool
-  default     = true
-}
-
 # Deployments
 variable "deployments" {
   type = map(object({
@@ -159,29 +152,6 @@ variable "gcp_bucket_name" {
   type        = string
   default     = null
   description = "Create and use Google storage with this name"
-}
-
-variable "gcp_bucket_location" {
-  type        = string
-  description = "The location of the bucket, e.g. EU or US"
-}
-
-variable "public_storage" {
-  type        = bool
-  default     = true
-  description = "Make the storge GCP bucket/AWS S3 public and create a CNAME"
-}
-
-variable "gcp_add_aws_s3_env" {
-  type        = bool
-  default     = false
-  description = "Add AWS_ variables for the GCS bucket"
-}
-
-variable "gcp_db_instance" {
-  type        = string
-  default     = null
-  description = "Create a database and a user for this installation and use them instead of DATABASE_URL"
 }
 
 # General
